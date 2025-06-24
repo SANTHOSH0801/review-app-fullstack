@@ -1,0 +1,102 @@
+.manage-stores-container2 {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem 2.5rem;
+    background-color: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-radius: 16px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+
+.description {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+    /* Gray-800 */
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Segoe UI', sans-serif;
+    letter-spacing: 0.5px;
+}
+
+.manage-stores-label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #444;
+}
+
+/* Style for text inputs */
+.manage-stores-input[type="text"],
+.manage-stores-input[type="email"] {
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.manage-stores-input[type="text"]:focus,
+.manage-stores-input[type="email"]:focus {
+    border-color: #facc15;
+    box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.2);
+}
+
+
+
+select.manage-stores-input:focus {
+    border-color: #facc15;
+    box-shadow: 0 0 0 4px rgba(234, 179, 8, 0.2);
+}
+
+
+
+.manage-stores-button {
+    padding: 0.8rem 1.5rem;
+    background-color: #facc15;
+    /* yellow-400 */
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #222;
+    cursor: pointer;
+    align-self: center;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.manage-stores-button:hover {
+    background-color: #eab308;
+    /* yellow-500 */
+    transform: scale(1.03);
+}
+
+.manage-stores-button:active {
+    transform: scale(0.98);
+}
+
+
+.error-message {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.success-message {
+    color: #28a745;
+    font-size: 20px;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+

@@ -1,0 +1,98 @@
+.manage-stores-container {
+  padding: 20px;
+  max-width: 950px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.manage-stores-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.manage-stores-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+}
+
+.manage-stores-input {
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  min-width: 165px;
+  font-size: 1rem;
+}
+
+.manage-stores-input:focus {
+  outline: none;
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+.manage-stores-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.manage-stores-table th,
+.manage-stores-table td {
+  padding: 1rem;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.manage-stores-table th {
+  background-color: #facc24;
+  color: #333;
+  font-weight: 600;
+}
+
+.manage-stores-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.add-store-wrapper {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.add-store-container {
+  display: inline-block;
+  background-color: #28a745;
+  color: white;
+  padding: 12px 28px;
+  font-size: 17px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-weight: 600;
+}
+
+.add-store-container:hover {
+  background-color: #218838;
+}
+
+@media screen and (max-width: 768px) {
+  .manage-stores-input {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+
+  .manage-stores-table th,
+  .manage-stores-table td {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .manage-stores-title {
+    font-size: 2rem;
+  }
+}

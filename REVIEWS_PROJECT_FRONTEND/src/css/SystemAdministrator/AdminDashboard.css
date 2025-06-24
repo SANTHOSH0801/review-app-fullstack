@@ -1,0 +1,31 @@
+.admin-dashboard-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-family: 'Segoe UI', sans-serif;
+    color: #1f2937;
+    /* gray-800 */
+}
+
+.admin-dashboard-container h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: #111827;
+    /* gray-900 */
+    margin-bottom: 1.5rem;
+}
+
+.admin-dashboard-container p {
+    font-size: 1.2rem;
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    background-color: #f3f4f6;
+    /* gray-100 */
+    border-left: 4px solid #3b82f6;
+    /* blue-500 */
+    border-radius: 6px;
+}

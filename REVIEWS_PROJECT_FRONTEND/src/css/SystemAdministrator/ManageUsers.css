@@ -1,0 +1,95 @@
+.manage-users-container {
+    padding: 20px;
+    max-width: 950px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.manage-users-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+}
+
+.manage-users-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    justify-content: center;
+}
+
+.manage-users-filters {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
+.manage-users-filters-title {
+    width: 100%;
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.manage-users-input {
+    padding: 0.6rem 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    min-width: 165px;
+    font-size: 1rem;
+}
+
+.manage-users-input:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.2);
+}
+
+
+.manage-users-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.manage-users-table th,
+.manage-users-table td {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.manage-users-table th {
+    background-color: #facc24;
+    ;
+    color: #333;
+    font-weight: 600;
+}
+
+.manage-users-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.add-users-wrapper {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.add-users-container {
+    display: inline-block;
+    background-color: #28a745;
+    color: white;
+    padding: 12px 28px;
+    font-size: 17px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 600;
+}

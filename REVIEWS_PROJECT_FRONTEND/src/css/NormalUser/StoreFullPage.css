@@ -1,0 +1,131 @@
+.store-fullpage-container2 {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 32px;
+    background: linear-gradient(to bottom right, #fff8dc, #fffacd);
+    border-radius: 20px;
+    box-shadow: 0 6px 18px rgba(255, 215, 0, 0.4);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.store-image2-container2 {
+    text-align: center;
+    margin-bottom: 24px;
+}
+.store-image2 {
+    width: 400px;              /* Fixed width */
+    height: 250px;             /* Fixed height */
+    border-radius: 16px;       /* Smooth rounded corners */
+    box-shadow: 0 6px 20px rgba(218, 165, 32, 0.3);  /* Softer golden shadow */
+    object-fit: cover;         /* Ensure aspect ratio is preserved */
+    display: block;
+    margin: 0 auto;            /* Center the image */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.store-image2:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 24px rgba(218, 165, 32, 0.5);
+}
+
+
+/* Improve h1 appearance */
+.store-fullpage-container2 h1 {
+    color: #b8860b;
+    font-size: 2.8rem;
+    margin-bottom: 12px;
+    text-align: center;
+    text-shadow: 1px 1px 3px #ffd700;
+}
+
+/* Improve paragraph styling */
+.store-fullpage-container2 p {
+    font-size: 1.1rem;
+    margin: 8px 0;
+    line-height: 1.6;
+}
+
+.store-fullpage-container2 strong {
+    color: #d4af37;
+}
+
+/* Rating Section Enhancements */
+.rating-section {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.rating-section label,
+.rating-section select,
+.rating-section button {
+    margin: 8px; /* Adds spacing between all elements */
+    font-size: 16px;
+}
+
+.rating-section select,
+.rating-section button {
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.rating-section label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: #b8860b;
+}
+
+.rating-section select {
+    font-size: 1.1rem;
+    padding: 10px 16px;
+    border: 2px solid #daa520;
+    border-radius: 10px;
+    background-color: #fff8dc;
+    color: #b8860b;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.rating-section select:hover,
+.rating-section select:focus {
+    border-color: #ffbf00;
+    outline: none;
+}
+
+.rating-section button {
+    display: inline-block;
+    margin-top: 16px;
+    padding: 10px 24px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(to right, #ffd700, #ffbf00);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 191, 0, 0.6);
+    transition: transform 0.2s ease;
+}
+
+.rating-section button:hover {
+    background-color: #e6ac00;
+    transform: scale(1.05);
+}
+
+.submit-message {
+    margin-top: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #b8860b;
+    text-align: center;
+    text-shadow: 1px 1px 1px #fffacd;
+}
