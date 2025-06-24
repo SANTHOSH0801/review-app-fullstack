@@ -29,9 +29,9 @@ function SignupPage() {
 async function submitData(Data) {
         try {
             let url = "https://reviews-app-backend-023o.onrender.com/api/users/register";
-            // if (Data.role === "Store Owner") {
-            //     url = "https://reviews-app-backend-023o.onrender.com/api/storeOwnerAuth/registerWithStore";
-            // }
+            if (Data.role === "Store Owner") {
+                url = "https://reviews-app-backend-023o.onrender.com/api/storeOwnerAuth/registerWithStore";
+            }
             const response = await axios.post(url, Data);
             console.log("Signup successful", response.data);
             setSuccessMessage("User  registered successfully! Please login to the account"); // Set success message
