@@ -14,6 +14,10 @@ function ManageStores() {
         address: '',
     });
 
+    // Sorting state
+    const [sortField, setSortField] = useState(null);
+    const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
+
     const navigate = useNavigate();
 
     function handleAddStore() {
@@ -51,10 +55,6 @@ function ManageStores() {
         };
     }, []);
 
-
-    if (loading) return <p>Loading stores...</p>;
-    if (error) return <p>{error}</p>;
-
     // Apply filters on allStores
     const filteredStores = allStores.filter((store) => {
         return (
@@ -63,6 +63,43 @@ function ManageStores() {
             store.address.toLowerCase().includes(filters.address.toLowerCase())
         );
     });
+
+    // Sorting function
+    const sortedStores = React.useMemo(() => {
+        if (!sortField) return filteredStores;
+        const sorted = [...filteredStores].sort((a, b) => {
+            let aField = a[sortField];
+            let bField = b[sortField];
+            if (aField === null || aField === undefined) aField = '';
+            if (bField === null || bField === undefined) bField = '';
+            if (typeof aField === 'string') aField = aField.toLowerCase();
+            if (typeof bField === 'string') bField = bField.toLowerCase();
+
+            if (aField < bField) return sortOrder === 'asc' ? -1 : 1;
+            if (aField > bField) return sortOrder === 'asc' ? 1 : -1;
+            return 0;
+        });
+        return sorted;
+    }, [filteredStores, sortField, sortOrder]);
+
+    if (loading) return <p>Loading stores...</p>;
+    if (error) return <p>{error}</p>;
+
+    // Handle sorting toggle
+    const handleSort = (field) => {
+        if (sortField === field) {
+            setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+        } else {
+            setSortField(field);
+            setSortOrder('asc');
+        }
+    };
+
+    // Render sort indicator
+    const renderSortIndicator = (field) => {
+        if (sortField !== field) return null;
+        return sortOrder === 'asc' ? ' ▲' : ' ▼';
+    };
 
     return (
         <>
@@ -92,22 +129,31 @@ function ManageStores() {
                         className="manage-stores-input"
                     />
                 </div>
+                <h3 className='description-text'>Click on the headings to get sorted</h3>
                 <table className="manage-stores-table">
                     <thead>
                         <tr className="manage-stores-row">
-                            <th className="manage-stores-header-cell">Name</th>
-                            <th className="manage-stores-header-cell">Email</th>
-                            <th className="manage-stores-header-cell">Address</th>
-                            <th className="manage-stores-header-cell">Rating</th>
+                            <th className="manage-stores-header-cell" onClick={() => handleSort('name')} style={{cursor: 'pointer'}}>
+                                Name{renderSortIndicator('name')}
+                            </th>
+                            <th className="manage-stores-header-cell" onClick={() => handleSort('email')} style={{cursor: 'pointer'}}>
+                                Email{renderSortIndicator('email')}
+                            </th>
+                            <th className="manage-stores-header-cell" onClick={() => handleSort('address')} style={{cursor: 'pointer'}}>
+                                Address{renderSortIndicator('address')}
+                            </th>
+                            <th className="manage-stores-header-cell" onClick={() => handleSort('averageRating')} style={{cursor: 'pointer'}}>
+                                Rating{renderSortIndicator('averageRating')}
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredStores.length === 0 ? (
+                        {sortedStores.length === 0 ? (
                             <tr className="manage-stores-row">
                                 <td className="manage-stores-cell" colSpan="4">Stores: 0</td>
                             </tr>
                         ) : (
-                            filteredStores.map((store) => (
+                            sortedStores.map((store) => (
                                 <tr key={store.id} className="manage-stores-row">
                                     <td className="manage-stores-cell">{store.name}</td>
                                     <td className="manage-stores-cell">{store.email}</td>
