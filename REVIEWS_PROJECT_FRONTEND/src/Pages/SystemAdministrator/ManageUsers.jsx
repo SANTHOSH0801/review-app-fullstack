@@ -17,6 +17,10 @@ function ManageUsers() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
+  // Sorting state
+  const [sortField, setSortField] = useState(null);
+  const [sortOrder, setSortOrder] = useState('asc'); // 'asc' or 'desc'
+
   useEffect(() => {
     const fetchUsers = async () => {
       try {
@@ -55,9 +59,6 @@ function ManageUsers() {
     });
   };
 
-  if (loading) return <p>Loading users...</p>;
-  if (error) return <p>{error}</p>;
-
   // Filter users by all filters on frontend
   const filteredUsers = users.filter(user => {
     const nameMatch = user.name.toLowerCase().includes(filter.name.toLowerCase());
@@ -66,6 +67,43 @@ function ManageUsers() {
     const roleMatch = user.role.toLowerCase().includes(filter.role.toLowerCase());
     return nameMatch && emailMatch && addressMatch && roleMatch;
   });
+
+  // Sorting function
+  const sortedUsers = React.useMemo(() => {
+    if (!sortField) return filteredUsers;
+    const sorted = [...filteredUsers].sort((a, b) => {
+      let aField = a[sortField];
+      let bField = b[sortField];
+      if (aField === null || aField === undefined) aField = '';
+      if (bField === null || bField === undefined) bField = '';
+      if (typeof aField === 'string') aField = aField.toLowerCase();
+      if (typeof bField === 'string') bField = bField.toLowerCase();
+
+      if (aField < bField) return sortOrder === 'asc' ? -1 : 1;
+      if (aField > bField) return sortOrder === 'asc' ? 1 : -1;
+      return 0;
+    });
+    return sorted;
+  }, [filteredUsers, sortField, sortOrder]);
+
+  if (loading) return <p>Loading users...</p>;
+  if (error) return <p>{error}</p>;
+
+  // Handle sorting toggle
+  const handleSort = (field) => {
+    if (sortField === field) {
+      setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc');
+    } else {
+      setSortField(field);
+      setSortOrder('asc');
+    }
+  };
+
+  // Render sort indicator
+  const renderSortIndicator = (field) => {
+    if (sortField !== field) return null;
+    return sortOrder === 'asc' ? ' ▲' : ' ▼';
+  };
 
   function handleNewUser(){
     navigate('/admin/ManageUsers/AddUser')
@@ -110,23 +148,23 @@ function ManageUsers() {
             className="manage-users-input"
           />
         </div>
-
+        <h3 className='description-text'>Click on the headings to get sorted</h3>
         <table className="manage-users-table">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Address</th>
-              <th>Role</th>
+              <th onClick={() => handleSort('name')} style={{cursor: 'pointer'}}>Name{renderSortIndicator('name')}</th>
+              <th onClick={() => handleSort('email')} style={{cursor: 'pointer'}}>Email{renderSortIndicator('email')}</th>
+              <th onClick={() => handleSort('address')} style={{cursor: 'pointer'}}>Address{renderSortIndicator('address')}</th>
+              <th onClick={() => handleSort('role')} style={{cursor: 'pointer'}}>Role{renderSortIndicator('role')}</th>
             </tr>
           </thead>
           <tbody>
-            {filteredUsers.length === 0 ? (
+            {sortedUsers.length === 0 ? (
               <tr>
                 <td colSpan="5">No users found</td>
               </tr>
             ) : (
-              filteredUsers.map((user) => (
+              sortedUsers.map((user) => (
                 <tr key={user.id}>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
